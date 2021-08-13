@@ -1,8 +1,9 @@
+import RestaurantInput from "./RestaurantInput";
 
 function App() {
   return (
     <div>
-      <p1>hello world</p1>
+      <RestaurantInput/>
     </div>
   );
 }

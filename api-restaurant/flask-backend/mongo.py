@@ -1,4 +1,4 @@
-import pymongo
+import pymongo 
 from pymongo import MongoClient
 import datetime
 from pprint import pprint
@@ -49,3 +49,7 @@ if matchingRestaurants != -1:
         pprint(smallRestaurant)
 
 removeRestaurant(restaurants, "chickFilA")
+removeRestaurant(restaurants, "Taco Bell")
+removeRestaurant(restaurants, "Panda Express")
+
+print('hello')
