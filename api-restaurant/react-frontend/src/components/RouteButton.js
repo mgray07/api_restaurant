@@ -8,7 +8,7 @@ function RouteButton(props) {
     return (
         <div>
             <button onClick = { () => {
-                history.push('/Second')
+                history.push('/EditPage')
             }}>Make Changes to Restaurant Collection</button>
         </div>
     )
