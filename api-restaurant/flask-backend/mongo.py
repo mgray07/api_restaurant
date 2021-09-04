@@ -35,19 +35,19 @@ restaurants = restaurantDB.restaurants
 
 restaurantsToAdd = []
 chipotle = createRestaurant("chipotle", "mexican", ["taco", "queso", "burrito", "beans", "rice"])
-addRestaurant(chipotle, restaurants)
+#addRestaurant(chipotle, restaurants)
 #restaurantsToAdd.append(chipotle)
 
 chickFilA = createRestaurant("chickFilA", "american", ["chicken", "tea", "nuggets", "mayo", "sauce"])
-addRestaurant(chickFilA, restaurants)
+#addRestaurant(chickFilA, restaurants)
 #restaurantsToAdd.append(chickFilA)
 
 pandaExpress = createRestaurant("Panda Express", "asian", ["rice", "soy sauce", "orange chicken", "fortune cookie", "seafood"])
-addRestaurant(pandaExpress, restaurants)
+#addRestaurant(pandaExpress, restaurants)
 #restaurantsToAdd.append(pandaExpress)
 
 tacoBell = createRestaurant("Taco Bell", "mexican", ["beans", "doritos", "chalupa", "taco", "baja blast", "sauce"])
-addRestaurant(tacoBell, restaurants)
+#addRestaurant(tacoBell, restaurants)
 #restaurantsToAdd.append(tacoBell)
 #addRestaurants(restaurantsToAdd, restaurants)
 
