@@ -5,11 +5,10 @@ function RouteHome() {
     let history = useHistory()
 
     return (
-        <div>
-            <button onClick = { () => {
-                history.push('/')
-            }}>Back To Search Page</button>
-        </div>
+        <button onClick = { () => {
+            history.push('/')
+        }}>Back To Search Page</button>
+        
     )
 }
 

@@ -25,7 +25,9 @@ def getRestaurants(restaurantCollection, key, value):
         
 
 def removeRestaurant(restaurantCollection, name):
+    #lowerName = name.lower()
     toBeDeleted = restaurantCollection.find({'name': name})
+
     restaurantCollection.delete_many({"name": name})
     return toBeDeleted
 
@@ -33,20 +35,27 @@ def removeRestaurant(restaurantCollection, name):
 restaurantDB = myRestaurants.restaurantDB
 restaurants = restaurantDB.restaurants
 
-restaurantsToAdd = []
-chipotle = createRestaurant("chipotle", "mexican", ["taco", "queso", "burrito", "beans", "rice"])
+
+
+#populateRestaurants(5)
+#depopulateRestaurants(5)
+#populateRestaurants(100)
+
+
+#restaurantsToAdd = []
+#chipotle = createRestaurant("chipotle", "mexican", ["taco", "queso", "burrito", "beans", "rice"])
 #addRestaurant(chipotle, restaurants)
 #restaurantsToAdd.append(chipotle)
 
-chickFilA = createRestaurant("chickFilA", "american", ["chicken", "tea", "nuggets", "mayo", "sauce"])
+#chickFilA = createRestaurant("chickFilA", "american", ["chicken", "tea", "nuggets", "mayo", "sauce"])
 #addRestaurant(chickFilA, restaurants)
 #restaurantsToAdd.append(chickFilA)
 
-pandaExpress = createRestaurant("Panda Express", "asian", ["rice", "soy sauce", "orange chicken", "fortune cookie", "seafood"])
+#pandaExpress = createRestaurant("Panda Express", "asian", ["rice", "soy sauce", "orange chicken", "fortune cookie", "seafood"])
 #addRestaurant(pandaExpress, restaurants)
 #restaurantsToAdd.append(pandaExpress)
 
-tacoBell = createRestaurant("Taco Bell", "mexican", ["beans", "doritos", "chalupa", "taco", "baja blast", "sauce"])
+#tacoBell = createRestaurant("Taco Bell", "mexican", ["beans", "doritos", "chalupa", "taco", "baja blast", "sauce"])
 #addRestaurant(tacoBell, restaurants)
 #restaurantsToAdd.append(tacoBell)
 #addRestaurants(restaurantsToAdd, restaurants)

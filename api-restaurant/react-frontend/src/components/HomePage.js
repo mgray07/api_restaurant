@@ -2,51 +2,17 @@ import axios from 'axios'
 import React from 'react';
 import {setState} from 'react'
 import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
+// import 'react-dropdown/style.css'
+import '../assets/Dropdown.css'
 import { useHistory } from 'react-router';
 import RouteButton from './RouteButton'
+import '../assets/HomePage.css'
+import Modal from 'react-modal';
+import GoogleLogin from 'react-google-login'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
+import GreetingPage from './GreetingPage';
+import SignInCheck from './SignInCheck';
 
-
-let resy;
-let resy2 = 'fffff';
-let res
-
-// function getData(e) {
-
-  
-//   let isFinished = false
-//   let axiosData
-
-//   async function getmyStuff() {
-//    let res = await axios.get('http://127.0.0.1:5000/')
-//     return res, true
-//   }
-//   axiosData = getmyStuff()[0]
-//   isFinished = getmyStuff()[1]
-//   while (isFinished == false) {
-//     continue
-//   }
-//   console.log(axiosData)
-  
-//   let search1 = document.getElementById('newSearchLabel').textContent
-//   let dataGet
-//   let finalList
-//   if (search1 === "Search Name:GET BY NAME") {
-//     dataGet = "name"
-//   }
-//   else if (search1 === "Search Style:GET BY STYLE") {
-//     dataGet = "style"
-//   }
-//   else if (search1 === "Search Tags:GET BY TAGS") {
-//     dataGet = "tags"
-//   }
-//   for(let i = 0; i < res.data.restaurants_backend.lenth(); i++) {
-//     if (res.data.restaurants_backend[i][dataGet] === document.getElementById('newSearchInput').value) {
-//       finalList.append(res.data.restaurants_backend[i])
-//     }
-//   }
-//   console.log({finalList})
-// }
 
 class HomePage extends React.Component {
 
@@ -56,6 +22,9 @@ class HomePage extends React.Component {
       name: '',
       style: '',
       tags: '',
+      signIn: true,
+      isLoading: true,
+      googleName: this.props.googleValue,
       allResults: this.props.value,
       sortedResults: [],
     };
@@ -65,25 +34,27 @@ class HomePage extends React.Component {
     this.setStyle = this.setStyle.bind(this)
     this.setTags = this.setTags.bind(this)
     this.searchType = this.searchType.bind(this)
+    // this.random = this.random.bind(this)
+
+
+    // console.log('inside homepage.js')
+    // console.log(this.state.signIn)
+    // this.props.changeSignIn()
+    // console.log(this.props.signIn)
   }
   
 
-  
+  componentWillUpdate(nextProps, nextState) {  
+    localStorage.setItem('signIn', JSON.stringify(nextState.signIn))
+  }
 
-  // componentWillMount() {
-  //   // axios
-  //   //   .get('http://127.0.0.1:5000/')
-  //   //   .then(res => {
-  //   //     this.setState({allResults: res.data.restaurants_backend})
-  //   //     this.showAll()
-  //   //   })
-  //   //   .catch(err => console.error(err));
-  //   // console.log(this.props.value)
-  //   // console.log(this.state.allResults)
-  //   console.log('hello')
-    
-  // }
-  
+  componentWillMount() {
+    localStorage.getItem('signIn') && this.setState({
+      signIn: JSON.parse(localStorage.getItem('signIn')),
+      isLoading: false
+    })
+  }
+
   
   setName = (event) => {
     this.setState({name: event.target.name});
@@ -118,15 +89,15 @@ class HomePage extends React.Component {
     }
     for(let i = 0; i < resultArray.length; i++) {
       if (dataGet === "tags") {
-        let lowerTags = resultArray[i][dataGet].map((data) => data.toLowerCase())
+        let lowerTags = resultArray[i][dataGet].map((data) => data.toString().toLowerCase())
         let searchInput = document.getElementById('newSearchInput').value
         //console.log(resultArray[i][dataGet].includes(searchInput))
         //console.log(searchInput.trim())
-        if (lowerTags.includes(searchInput.trim().toLowerCase())) {
+        if (lowerTags.includes(searchInput.trim().toString().toLowerCase())) {
           finalList.push(resultArray[i])
         }
       }
-      else if (resultArray[i][dataGet].toLowerCase() === document.getElementById('newSearchInput').value.trim().toLowerCase()) {
+      else if (resultArray[i][dataGet].toString().toLowerCase() === document.getElementById('newSearchInput').value.trim().toString().toLowerCase()) {
         finalList.push(resultArray[i])
       }
     }
@@ -139,65 +110,24 @@ class HomePage extends React.Component {
     }
     this.showOutput(finalList)
   }
-
+  
   getData = (event) => {
+    if (document.getElementById('newSearchInput').value === '') {
+      return
+    }
     //console.log(event)
     let dog = axios.get('http://127.0.0.1:5000/')
     .then(res => {
       this.setState({sortedResults: res.data.restaurants_backend})
+      document.getElementById("showOutputId").style.display = "block"
       this.sortData()
     })
 
   }
-  
-  // getAll = (e) => {
-  //   axios
-  //     .get('http://127.0.0.1:5000/')
-  //     .then(res => {
-  //       this.setState({allResults: res.data.restaurants_backend})
-  //       this.showAll()
-  //     })
-  //     .catch(err => console.error(err));
-  //   console.log(this.state.allResults)
-  //   console.log(this.props.value)
-  // }
-  
-  // postData = () => {
-  //   if (document.getElementById('name').value === '' || document.getElementById('style').value === '' || document.getElementById('tags').value === '') {
-  //     return
-  //   }
-  //   let tempo = document.getElementById("tags").value.split(',')
-  //   let i = 0
-  //   for (i=0; i< tempo.length; i++) {
-  //     tempo[i] = tempo[i].trim()
-  //   }
-  //   axios
-  //   .post('http://127.0.0.1:5000/', {
-  //     data: {
-  //       name: document.getElementById("name").value.trim(),
-  //       style: document.getElementById("style").value.trim(),
-  //       tags: tempo
-  //     }
-  //   })
-  //   .then(res => console.log(res))
-  //   .catch(err => console.error(err));
-  // }
 
-  // deleteData = () => {
-  //   if (document.getElementById('deleteId').value === '') {
-  //     return
-  //   }
-  //   axios
-  //   .delete('http://127.0.0.1:5000/', {
-  //     params: {
-  //       name: document.getElementById("deleteId").value.trim()
-  //     }
-  //   })
-  //     .then(res => console.log(res))
-  //     .catch(err => console.error(err));
+  // random = () => {
+  //   console.log('xD')
   // }
-
-  
   searchType = (event) => {
     
     let labelText
@@ -221,7 +151,7 @@ class HomePage extends React.Component {
     }
    
     let  typeSearch = document.getElementById('typeOfSearch')
-    let  newSearchLabel = document.createElement('label') //<p1></p1>
+    let  newSearchLabel = document.createElement('label') 
     // let  newSearchLabel = document.createElement(
     //   'label',
     //   {id: 'newSearchLabel'},
@@ -240,6 +170,10 @@ class HomePage extends React.Component {
       newSearchInput.type = "text"
       newSearchInput.placeholder = inputPlaceholder //2
       newSearchInput.id = "newSearchInput"
+      // newSearchInput.onchange = this.random
+      // newSearchInput.required = true
+
+      
 
       let newSearchButton = document.createElement('button')
       // let newSearchButton = document.createElement(
@@ -248,12 +182,15 @@ class HomePage extends React.Component {
       //   {textContent: getType},
       //   {id: 'newSearchButton'}
       // )
+
+      
       
     
       newSearchButton.textContent = getType
       // newSearchButton.onClick = this.test
       newSearchButton.onclick = this.getData
-      
+      newSearchButton.id = "newSearchButton"
+    
 
       // newSearchButton.id = "newSearchButton"
 
@@ -269,35 +206,20 @@ class HomePage extends React.Component {
       typeSearch.appendChild(newSearchButton)
   }
   
-  // showAll = () => {
-  //   let showAllOutput = document.getElementById('showAllId')
-  //   let listOutput = document.createElement('div')
-  //   let emptyCase = document.createElement('h5')
-  //   emptyCase.textContent = 'No Restaurants Added Yet'
-  //   let i = 0
-    
-  //   this.state.allResults.map((result) => {
-  //     i = i+1
-  //     let temp = document.createElement('h5')
-  //     temp.textContent = JSON.stringify(result)
-  //     listOutput.appendChild(temp)
-  //     // return JSON.stringify(result)
-  //   })
-  //   if (i === 0) {
-  //     listOutput.appendChild(emptyCase)
-  //   }
-  //   while (showAllOutput.firstChild) {
-  //     showAllOutput.removeChild(showAllOutput.lastChild)
-  //   }
-  //   showAllOutput.appendChild(listOutput)
-  // }
 
   restaurantCard = (name, style, tags) => {
     let restaurantCard = document.createElement('div')
+    restaurantCard.id = 'restaurantCardId'
 
     let restaurantName = document.createElement('h5')
+    restaurantName.id = 'restaurantNameId'
     let restaurantStyle = document.createElement('h5')
+    restaurantStyle.id = 'restaurantStyleId'
     let restaurantTags = document.createElement('h5')
+    restaurantTags.id = 'restaurantTagsId'
+    
+    
+
 
     restaurantName.textContent = `Name: ${name}`
     restaurantStyle.textContent = `Style: ${style}`
@@ -313,6 +235,7 @@ class HomePage extends React.Component {
 
     let showOutput = document.getElementById('showOutputId')
     let listOutput = document.createElement('div')
+    listOutput.id = 'listOutputId'
     let emptyCase = document.createElement('h5')
     emptyCase.textContent = `No Result Matching ${document.getElementById('newSearchInput').value.trim()}`
     let i = 0
@@ -333,37 +256,73 @@ class HomePage extends React.Component {
     }
     showOutput.appendChild(listOutput)
   }
-  
+
+  responseGoogle = (response) => {
+    console.log('xDdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
+    this.setState({googleName: response.profileObj.name})
+    
+    
+    // console.log('foobar')
+  }
+
+  changeSignIn = () => {
+      console.log('inside changesignin')
+      console.log('before', this.state.signIn)
+      let temp = this.state.signIn
+      this.setState({signIn: !temp})  
+  };
   
   render() {
     const options = ['name', 'style', 'tags']
-    const defaultOption = options[0]
-    
-    
+    const defaultOption = options[0] 
     return (
-    <div>
+      
+    <div className = "EntirePage">
+
+      {/* <div>
+        <Router>
+          <Switch>
+            <Route exact path = '/GreetingPage' component = {GreetingPage}>
+              <GreetingPage googleValue = {this.state.googleName} />
+            </Route>
+          </Switch>
+        </Router>
+     </div>    */}
+      <div className = 'topStuff'>
+      <div className = 'routeButton'>
+          <RouteButton ></RouteButton>  
+      </div>
       <div>
-        <h2>
-          Choose Your Search Method:
-        </h2>
-        <br />
-        <Dropdown options={options} onChange={this._onSelect} id = "dropdown-menu" placeholder = "Select a Search Method" onChange={this.searchType}/>
-
-        <div id = 'typeOfSearch'>
-        </div>
-        <div id =  'showOutputId'>
-        </div>
-        <br />
-
-        <br />
-        <div id = 'showAllId'></div>
-        <br />
+        {console.log('homepagejs', this.state.signIn)}
+        <SignInCheck changeSignIn = {this.changeSignIn} signIn = {this.state.signIn}/>
+      </div>
+      {/* <div id='google'>
+        <GoogleLogin clientId = '279700457129-jutmcs5c0ptfhjh2ss06kq7jki0d38se.apps.googleusercontent.com'
+        buttonText = 'Sign In'
+        onSuccess = {this.responseGoogle}
+        onFailure = {this.responseGoogle}
+        // redirectUri = 'http://localhost:3000/GreetingPage/'
+        // uxMode="redirect"
+        cookiePolicy = 'single_host_origin'/>
         
-        <br /> 
-       
-        <RouteButton ></RouteButton>    
-      </div>   
-    </div>
+      </div> */}
+      
+      </div>
+      
+      <div className = 'Header'>
+        <h1>Restaurant Finder</h1>        
+      </div>
+
+      <h2 className = "Method">
+        Choose Your Search Method
+      </h2>
+      
+      <Dropdown options={options} onChange={this._onSelect} id = "dropdown-menu" placeholder = "Select a Search Method" onChange={this.searchType}/>
+
+      <div id='typeOfSearch'></div>
+      <div id = 'showOutputId'></div>
+      
+    </div>      
     )    
   }
 }

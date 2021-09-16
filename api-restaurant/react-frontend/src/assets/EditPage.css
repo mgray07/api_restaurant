@@ -1,0 +1,142 @@
+.Header {
+    margin: 0;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 40px;
+    background-color: cyan;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    background-image: url("./j4_-_Copy.png");
+    /* need to figure out how to make work on all computers*/
+    background-repeat: no-repeat;
+    background-size: 100px 120px;
+}
+
+.entirePage {
+     
+    /* align-items: center;  */
+    min-height: 100vh;
+    /* max-width: 16000px; */
+    font-family: 'Roboto';
+    background-color: rgb(168, 89, 179);
+}
+.routeHome {
+    padding: 0px;
+    margin: 0;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteButtonDiv, .postButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.postForm {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    background-color: plum;
+}
+
+.textInput{
+    margin-left: 10px;
+    padding: 5px;
+    border: 4px solid;
+    height: 1em;
+}
+
+.deleteForm{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: 5px solid blue;
+    background-color: s;
+}
+
+.deleteInput{
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid;
+}
+
+.postAndDelete{
+    margin: 20px;
+     width: 35%; 
+    padding: 10px;
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.nameInput, .styleInput, .tagsInput, .deleteInput{
+    display: flex;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid;
+    
+}
+
+#restaurantCardId {
+    
+    border: gray solid;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:20%;
+}
+
+#showAllId {
+    border: solid black;
+    padding: 10px;
+    margin: 20px;
+    background-color: limegreen;
+    width: 65%;
+}
+
+#listOutputId {
+     display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-auto-rows: 100px;  */
+   
+    justify-content: center;
+    flex-direction: row;
+}
+
+.deleteButton, .postButton {
+    width: 30%;
+    float: center;
+    /* margin-left: 150px; */
+    display: flex;
+    justify-content: center;
+}
+
+#openMoreDivId {
+    display: flex;
+    justify-content: center;
+}
+
+#openMoreId {
+    padding: 5px;
+    margin: 5px;
+    /* max-width: 40%; */
+    width: 50%;
+    float: center;
+    display: flex;
+    justify-content: center;
+}

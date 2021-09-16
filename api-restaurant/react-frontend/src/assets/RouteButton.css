@@ -1,0 +1,8 @@
+button{
+    padding: 5px;
+    border-radius: 7px;
+}
+
+button:hover{
+    background-color:cadetblue;
+}
