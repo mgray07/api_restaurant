@@ -10,8 +10,8 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-color: red;
-    border: 1px solid red;
+    background-color: #fb7b7b;
+    /* border: 1px solid red; */
     border-radius: 2px;
     box-sizing: border-box;
     color: #333;
@@ -47,7 +47,7 @@
   }
   
   .Dropdown-menu {
-    background-color: green;
+    background-color: rgb(150, 134, 213);
     border: 1px solid #ccc;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;

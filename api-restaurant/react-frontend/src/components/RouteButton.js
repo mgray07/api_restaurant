@@ -7,8 +7,11 @@ function RouteButton(props) {
     // console.log(props.value)
 
     return (<button onClick = { () => {
-                history.push('/EditPage')
-            }}>Make Changes to Restaurant Collection</button>       
+                history.push({
+                pathname: '/EditPage',
+                state: { valid: true }
+            })
+            }}>View or Change Your Restaurant List</button>       
             )
 }
 

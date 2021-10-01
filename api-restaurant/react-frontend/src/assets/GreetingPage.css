@@ -1,0 +1,43 @@
+
+.Header {
+    margin: 0;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 40px;
+    background-color: cyan;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    /* background-image: url("./j4_-_Copy.png"); */
+    /* need to figure out how to make work on all computers*/
+    background-repeat: no-repeat;
+    background-size: 100px 120px;
+}
+
+.greetingBody{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profileName{
+    margin: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    color:rgb(2, 0, 8);
+}
+.profilePicture{
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.routeButtons{
+    height: 50px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

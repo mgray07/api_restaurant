@@ -28,10 +28,11 @@ let SignInCheck = (props) => {
         //setShowLoginButton(false);
         //setShowLogoutButton(true);
         props.changeSignIn();
+        props.changeSignIn2();
         console.log('do we make it here')
         history.push({
             pathname: '/GreetingPage',
-            state: { googleValue: response.profileObj.name, googlePicture: response.profileObj.imageUrl }
+            state: { googleID: response.profileObj.googleId , googleValue: response.profileObj.name, googlePicture: response.profileObj.imageUrl }
         });
     }
 
@@ -42,9 +43,10 @@ let SignInCheck = (props) => {
         // setShowLoginButton(true);
         // setShowLogoutButton(false);
         props.changeSignIn();
+        props.changeSignIn2();
         history.push({
             pathname: '/FarewellPage',
-            //state: { googleValue: response.profileObj.name, googlePicture: response.profileObj.imageUrl }
+            state: { valid: true }
         });
     }
 

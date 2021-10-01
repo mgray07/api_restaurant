@@ -272,6 +272,10 @@ class HomePage extends React.Component {
       this.setState({signIn: !temp})  
   };
   
+  changeSignIn2 = () => {
+    this.props.changeSignIn1()
+  }
+
   render() {
     const options = ['name', 'style', 'tags']
     const defaultOption = options[0] 
@@ -294,7 +298,7 @@ class HomePage extends React.Component {
       </div>
       <div>
         {console.log('homepagejs', this.state.signIn)}
-        <SignInCheck changeSignIn = {this.changeSignIn} signIn = {this.state.signIn}/>
+        <SignInCheck changeSignIn2 = {this.changeSignIn2} changeSignIn = {this.changeSignIn} signIn = {this.state.signIn}/>
       </div>
       {/* <div id='google'>
         <GoogleLogin clientId = '279700457129-jutmcs5c0ptfhjh2ss06kq7jki0d38se.apps.googleusercontent.com'
@@ -310,7 +314,7 @@ class HomePage extends React.Component {
       </div>
       
       <div className = 'Header'>
-        <h1>Restaurant Finder</h1>        
+        <h1  >Restaurant Finder</h1>        
       </div>
 
       <h2 className = "Method">

@@ -15,7 +15,7 @@
     justify-content: center;
     display: flex;
     justify-content: center;
-    background-image: url("./j4_-_Copy.png");
+    /* background-image: url("./j4_-_Copy.png");  */
     /* need to figure out how to make work on all computers*/
     background-repeat: no-repeat;
     background-size: 220px 270px;
@@ -45,7 +45,7 @@
     align-items: center; */
     min-height: 100vh;
     font-family: 'Roboto';
-    background-color: rgb(168, 89, 179);
+    background-color: #F7F9FB;
 }
 
 #google {
@@ -95,7 +95,7 @@
     border: solid black;
     padding: 10px;
     margin: 20px;
-    background-color: green;
+    background-color: #7de7d7;
     display: none;
 }
 
