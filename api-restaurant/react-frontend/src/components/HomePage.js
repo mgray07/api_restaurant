@@ -12,6 +12,7 @@ import GoogleLogin from 'react-google-login'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 import GreetingPage from './GreetingPage';
 import SignInCheck from './SignInCheck';
+import HamburgerMenu from 'react-hamburger-menu'
 
 
 class HomePage extends React.Component {
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
       style: '',
       tags: '',
       signIn: true,
+      hamburgerOpen: false,
       isLoading: true,
       googleName: this.props.googleValue,
       allResults: this.props.value,
@@ -276,6 +278,53 @@ class HomePage extends React.Component {
     this.props.changeSignIn1()
   }
 
+  getSetStyleRule(sheetName, selector, rule) {
+    var stylesheet = document.querySelector('link[href*=' + sheetName + ']')
+    if( stylesheet ){
+        stylesheet = stylesheet.sheet
+        stylesheet.insertRule(selector + '{ ' + rule + '}', stylesheet.cssRules.length)
+    }
+
+    return stylesheet
+}
+
+
+
+  handleHamburger = () =>{
+    var mysheet = document.querySelectorAll('link[rel="stylesheet"][href="../assets/HomePage.css"]')[1].sheet
+    let routeButton2 = document.getElementById("routeButtonId");
+    if(window.getComputedStyle(routeButton2, null).getPropertyValue("visibility") == "hidden"){
+      console.log('x');
+      mysheet.insertRule('#routeButtonId {visibility: visible}', 1)
+      // this.getSetStyleRule('HomePage.css', '#routeButtonId', 'visibility: visible')
+      //window.getComputedStyle(routeButton2, null).getPropertyValue("visibility") = "visible"
+      //routeButton2.style.visibility = "visible"; //if none show
+    }
+    else if (window.getComputedStyle(routeButton2, null).getPropertyValue("visibility")) {
+      console.log('d');
+      mysheet.insertRule('#routeButtonId {visibility: hidden}', 1)
+      // this.getSetStyleRule('HomePage.css', '#routeButtonId', 'visibility: hidden')
+      //HomePageCss.insertRule('#routeButtonId {visibility: hidden')
+      //this.adjustCSSRules('#routeButtonId', 'visiblity: hidden', "HomePage.css")
+      //routeButton2.style.visibility = "hidden"; //if show close
+      //window.getComputedStyle(routeButton2, null).getPropertyValue("visibility") = "hidden"
+    }
+    this.setState({hamburgerOpen: !this.state.hamburgerOpen})
+    
+  }
+
+  // openHamburger = () => {
+    
+  // }
+  // testButton = () =>{
+  //   let x = document.getElementById("testId");
+  //   if(x.style.visibility == "hidden"){
+  //     x.style.visibility = "visible";
+  //   }
+  //   else{
+  //     x.style.visibility = "hidden";
+  //   }
+  // }
   render() {
     const options = ['name', 'style', 'tags']
     const defaultOption = options[0] 
@@ -293,12 +342,29 @@ class HomePage extends React.Component {
         </Router>
      </div>    */}
       <div className = 'topStuff'>
-      <div className = 'routeButton'>
-          <RouteButton ></RouteButton>  
+      <div className = 'hamburger'>
+        <HamburgerMenu
+          // onClick = {this.openHamburger}
+          isOpen={this.state.hamburgerOpen}
+          menuClicked={this.handleHamburger.bind(this)}
+          width={18}
+          height={15}
+          strokeWidth={1}
+          rotate={0}
+          color='black'
+          borderRadius={0}
+          animationDuration={0.5}
+        />
+      </div>
+      {/* <button id = "testButton" onClick = {this.testButton}> test</button>
+      <h5 id = 'testId'>xD</h5> */}
+      <div className = 'routeButton' id = 'routeButtonId' >
+          <RouteButton></RouteButton>
+          <SignInCheck changeSignIn2 = {this.changeSignIn2} changeSignIn = {this.changeSignIn} signIn = {this.state.signIn}/>  
       </div>
       <div>
         {console.log('homepagejs', this.state.signIn)}
-        <SignInCheck changeSignIn2 = {this.changeSignIn2} changeSignIn = {this.changeSignIn} signIn = {this.state.signIn}/>
+        
       </div>
       {/* <div id='google'>
         <GoogleLogin clientId = '279700457129-jutmcs5c0ptfhjh2ss06kq7jki0d38se.apps.googleusercontent.com'

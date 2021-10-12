@@ -45,6 +45,8 @@
     align-items: center; */
     min-height: 100vh;
     font-family: 'Roboto';
+    /* min-width: 480px;
+    max-width: 1920px; */
     background-color: #F7F9FB;
 }
 
@@ -119,4 +121,44 @@
     padding: 10px;
     /* word-break: break-word; */
     overflow: hidden;
+}
+
+
+.hamburger {
+    visibility: hidden;
+}
+
+#routeButtonId{
+    visibility: visible;
+}
+
+/* #testButton{
+    visibility: hidden;
+}
+
+#testId{
+    visibility: visible; */
+
+@media (max-width: 1110px) {
+    /* .routeButton{
+        display: none;
+        visibility: hidden;
+    } */
+    /* #testButton{
+        visibility: visible;
+    }
+    #testId{
+        visibility: hidden; */
+    
+
+    #routeButtonId{
+        visibility: hidden;
+    }
+    
+    .routeButton {
+        visibility: hidden;
+    } 
+    .hamburger{
+        visibility: visible;
+    }
 }
