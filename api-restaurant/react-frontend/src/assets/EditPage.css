@@ -1,0 +1,224 @@
+.Header {
+    margin: 0;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 40px;
+    background-color: #eca35f;
+    justify-content: center;
+    display: flex;
+     justify-content: center;
+    /* background-image: url("./j4_-_Copy.png");  */
+    /* need to figure out how to make work on all computers*/
+    background-repeat: no-repeat;
+    background-size: 100px 120px;
+}
+
+.fullPage{
+    background-color: gray;
+   
+    
+}
+.entirePage {
+     
+    /* align-items: center;  */
+    min-height: 100vh;
+    /* max-width: 16000px; */
+    font-family: 'Roboto';
+    background-color: #F7F9FB;
+}
+.routeHome {
+    display: flex;
+    flex-direction: column;
+    
+    margin: 0px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+ #modalName, #modalStyle {
+    padding: 5px;
+    margin: 5px;
+    border: black solid;
+    word-break: break-all;
+}
+
+#modalTags{
+    flex-wrap: wrap;
+    word-break: break-all;
+    border: black solid;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+}
+
+/* #modalName, #modalStyle, #modalTags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    border: 2px solid gray;
+} */
+
+#modalId{
+    /* top: '50%';
+    left: '50%';
+    right: 'auto';
+    background-color: peachpuff;
+    bottom: auto;
+    margin-right: '-50%';
+    transform: 'translate(-50%, -50%)'; */
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#modalButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#modalCloseButton {
+    position: fixed;
+    font-weight: bold;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    width: 30%;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteButtonDiv, .postButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.postForm {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 2px solid black; */
+    background-color: #7eb5da;
+}
+
+.textInput, .ratingInput{
+    margin-left: 10px;
+    padding: 5px;
+    /* border: 4px solid; */
+    height: 1em;
+}
+
+.deleteForm{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    /* border: 5px solid blue; */
+    background-color: #8FC1E3;
+}
+
+/* .deleteInput{
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid;
+} */
+
+.postAndDelete{
+    /* margin: 20px; */
+    width: 35%; 
+    padding: 10px;
+    /* border: 2px black solid; */
+    display: flex;
+    flex-direction: column;
+}
+
+#ratingId {
+    margin-left: 5px;
+}
+
+.nameInput, .styleInput, .tagsInput, .deleteInput, .ratingLabel{
+    display: flex;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid;
+}
+
+#restaurantCardId {
+    
+    border: black solid;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:20%;
+}
+
+#showAllId {
+    border: solid black;
+    padding: 10px;
+    margin: 20px;
+    background-color: #7de7d7;
+    width: 65%;
+}
+
+#showAllId2{
+    border: solid black;
+    padding: 10px;
+    margin: 20px;
+    background-color: #7de7d7;
+    
+}
+
+#listOutputId {
+     display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-auto-rows: 100px;  */
+   
+    justify-content: center;
+    flex-direction: row;
+}
+
+.deleteButton, .postButton {
+    width: 30%;
+    float: center;
+    /* margin-left: 150px; */
+    display: flex;
+    justify-content: center;
+}
+
+#openMoreDivId {
+    display: flex;
+    justify-content: center;
+}
+
+#openMoreId {
+    padding: 5px;
+    margin: 5px;
+    /* max-width: 40%; */
+    width: 50%;
+    float: center;
+    display: flex;
+    justify-content: center;
+}
